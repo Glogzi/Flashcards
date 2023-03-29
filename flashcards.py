@@ -1,8 +1,5 @@
 import tkinter as tk
-import os
 import random as rndm
-
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 #window settings
 root = tk.Tk()
@@ -30,7 +27,9 @@ def Check():
     Answer = Entry.get()
     if RightAnswer == Answer:
         IsItCorrect.config(text= 'Correct', fg = '#00FF00')
-        IsItCorrect2.destroy()
+        IsItCorrect2.config(text='')
+        
+            
         #clears  Entry Pool;Note for myself: 0, tk.END means that it will only clear from the first to the last character, not all pool
         Entry.delete(0, tk.END)
         #new question for making it loop
