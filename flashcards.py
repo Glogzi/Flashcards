@@ -8,9 +8,9 @@ root.title('flashcards')
 
 #takes  the answers and questions from .txt file
 
-with open('Questions.txt', 'r') as  Q:
+with open('Questions.txt', 'r', encoding='utf8') as  Q:
     QuestionsList = Q.read().splitlines()
-with open('RightAnswers.txt', 'r') as  A:
+with open('RightAnswers.txt', 'r', encoding='utf8') as  A:
     AnswersList = A.read().splitlines()
 
 
@@ -21,7 +21,7 @@ RightAnswer = AnswersList[AnswerIndex]
 
 
 #checks is the answer the same as Right Answer
-def Check():
+def Check(*uselessThingThatWithoutItCodeDoesntWorkPythonPlsDontBeRetarted):
     #global make var accesible for all of the code
     global RightAnswer
     Answer = Entry.get()
@@ -29,7 +29,6 @@ def Check():
         IsItCorrect.config(text= 'Correct', fg = '#00FF00')
         IsItCorrect2.config(text='')
         
-            
         #clears  Entry Pool;Note for myself: 0, tk.END means that it will only clear from the first to the last character, not all pool
         Entry.delete(0, tk.END)
         #new question for making it loop
@@ -58,8 +57,10 @@ Entry = tk.Entry(root, width= 30)
 Entry.pack()
 
 #submit button
-Submit = tk.Button(root, text='Submit', command=Check,)
+Submit = tk.Button(root, text='Submit', command=Check)
+root.bind("<Return>", Check)
 Submit.pack()
+
 
 #shows that answer was correct or not
 IsItCorrect = tk.Label(root, text='',  font=('Arial', 15))
